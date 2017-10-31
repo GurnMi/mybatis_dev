@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-31T05:47:55" hostname="DESKTOP-7QN7VR2" time="0.358">
+<testsuite name="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-10-31T07:16:33" hostname="DESKTOP-7QN7VR2" time="0.002">
   <properties/>
-  <testcase name="testBOpenSession" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.357"/>
+  <testcase name="testBOpenSession" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.002"/>
   <testcase name="testgetASqlSessionFactory" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.0"/>
-  <system-out><![CDATA[com.mysql.jdbc.JDBC4Connection@2e5e0a82
+  <system-out><![CDATA[com.mysql.jdbc.JDBC4Connection@14bfc35d
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

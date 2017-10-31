@@ -30,7 +30,7 @@
 	
 	
 	<mappers>
-		<!-- <mapper resource="kr/or/dgit/mybatis_code/mappers/StudentMapper.xml" /> -->
+		<mapper resource="kr/or/dgit/mybatis_dev/mappers/StudentMapper.xml" />
 	</mappers>
 	
 </configuration>
