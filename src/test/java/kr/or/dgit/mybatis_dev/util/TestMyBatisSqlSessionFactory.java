@@ -26,7 +26,7 @@ public class TestMyBatisSqlSessionFactory {
 		factory = null;
 	}
 	
-	@Test
+	@Test 
 	public void testgetASqlSessionFactory() {
 		factory =  MyBatisSqlSessionFactory.getSqlSessionFactory();
 		Assert.assertNotNull(factory);
