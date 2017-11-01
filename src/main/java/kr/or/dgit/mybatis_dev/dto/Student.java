@@ -1,14 +1,20 @@
 package kr.or.dgit.mybatis_dev.dto;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class Student {
 	private int studId;
 	private String name;
 	private String email;
-	private PhoneNumber phone;
 	private Date dob;
+	private PhoneNumber phone;
 	
+	
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getStudId() {
 		return studId;
 	}
@@ -44,6 +50,15 @@ public class Student {
 	public String toString() {
 		return String.format("Student [%s, %s, %s, %s, %s]", studId, name, email, phone, dob);
 	}
+	
+	public Student(int studId, String name, String email, PhoneNumber phone, Date dob) {
+		this.studId = studId;
+		this.name = name;
+		this.email = email;
+		this.dob = dob;
+		this.phone = phone;
+	}
+
 	
 	
 	

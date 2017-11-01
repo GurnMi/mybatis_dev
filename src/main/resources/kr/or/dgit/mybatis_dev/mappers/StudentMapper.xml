@@ -14,10 +14,71 @@
 		</where>
 	</sql>
 	
+	<sql id="insertSQL">
+		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB)
+		VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
+	</sql>
+	
+	<insert id="insertStudent" parameterType="Student">
+		<include refid="insertSQL"/>
+	</insert>
+	
+	<insert id="insertStudentWithAPI" parameterType="Student">
+		<include refid="insertSQL"/>
+	</insert>
+	
+	
+	
+	<insert id="insertStudentAutoInc" parameterType="Student">
+		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB)
+		VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
+	</insert>
+	
+	<select id="selectStudentByAll" resultType="Student">
+		<include refid="selectSql"/>
+	</select>
+	
 	<select id="selectStudentByNo" parameterType="Student" resultType="Student">
 		 <include refid="selectSql"/>
-		 where stud_id=#{studId}
+		<!--  where stud_id=#{studId} -->
+		<include refid="whereSql"/>
 	</select>
 
-
+	<select id="selectOne" parameterType="Student" resultType="Student">
+		<include refid="selectSql"/>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectList" resultType="Student">
+		<include refid="selectSql"/>
+	</select>
+	
+	<!-- updateSQL -->
+	 <sql id="updateSQL">
+		UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email},PHONE=#{phone},DOB=#{dob}
+		WHERE STUD_ID=#{studId}
+	</sql>
+	
+	<update id="updateStudent" parameterType="Student">
+		<include refid="updateSQL"/>
+	</update>
+	
+	<update id="updateStudentWithAPI" parameterType="Student">
+		<include refid="updateSQL"/>
+	</update> 
+	
+	<!-- update -->
+	<sql id="deleteSql">
+		DELETE FROM STUDENTS WHERE STUD_ID=#{studId}
+	</sql>
+	<update id="deleteStudent" parameterType="int">
+		<include refid="deleteSql"/>
+	</update>
+	<update id="deleteStudentWithAPI" parameterType="int">
+		<include refid="deleteSql"/>
+	</update>
+	
+	
+	
+	
 </mapper>
