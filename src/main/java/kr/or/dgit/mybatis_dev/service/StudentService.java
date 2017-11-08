@@ -1,6 +1,7 @@
 package kr.or.dgit.mybatis_dev.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -131,5 +132,112 @@ public class StudentService {
 		}
 		return 1;
 	}
+	
+	public List<Student> findStudentByAllForResutlMap(){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByAllForResutlMap();
+		}
+	}
+	
+	public List<Student> findStudentByAllForResutlMapWithAPI(){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByAllForResutlMapWithAPI();
+		}
+	}
+	
+	public List<Map<String, Object>> findStudentByAllForHashMap(){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByAllForHashMap();
+		}
+	}
+	
+	public List<Map<String, Object>> findStudentByAllForHashMapWithAPI(){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByAllForHashMapWithAPI();
+		}
+	}
+	
+	
+	public Student findStudentByNoForResultMapExtends(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByNoForResultMapExtends(student);
+		}
+	}
+	
+	public Student findStudentByNoForResultMapExtendsWithAPI(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByNoForResultMapExtendsWithAPI(student);
+		}
+	}
+	
+	public Student selectStudentByNoAssociation(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByNoAssociation(student);
+		}
+	}
+	
+	public Student selectStudentByNoAssociationWithAPI(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentByNoAssociationWithAPI(student);
+		}
+	}
+	
+	
+	public int insertEnumStudent(Student student) {
+		int res=-1;
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			res = dao.insertEnumStudent(student);
+			sqlSession.commit();
+		}
+		return res;
+	}
+	
+	public int insertEnumStudentWithAPI(Student student) {
+		int res=-1;
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			res = dao.insertEnumStudentWithAPI(student);
+			sqlSession.commit();
+		}
+		return res;
+	}
+	
+	public Student findAllStudentByParam(String name, String email) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectAllStudentByParam(name, email);
+		}
+	}
+	
+	public Student findAllStudentByStdent(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectAllStudentByStdent(student);
+		}
+	}
+	
+	public Student findAllStudentByMap(Map<String, String> map) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectAllStudentByMap(map);
+		}
+	}
+	
+	public Map<Integer, String> findStudentForMap() {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();){
+			StudentDao dao = new StudentDaoImpl(sqlSession);
+			return dao.selectStudentForMap();
+		}
+	}
+	
 	
 }

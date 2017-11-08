@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-01T07:57:03" hostname="DESKTOP-7QN7VR2" time="0.002">
+<testsuite name="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-08T06:59:06" hostname="DESKTOP-7QN7VR2" time="0.001">
   <properties/>
-  <testcase name="testBOpenSession" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.002"/>
+  <testcase name="testBOpenSession" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.001"/>
   <testcase name="testgetASqlSessionFactory" classname="kr.or.dgit.mybatis_dev.util.TestMyBatisSqlSessionFactory" time="0.0"/>
   <system-out><![CDATA[DEBUG [Test worker] - Opening JDBC Connection
-DEBUG [Test worker] - Checked out connection 1926605254 from pool.
-DEBUG [Test worker] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@72d5a9c6]
-com.mysql.jdbc.JDBC4Connection@72d5a9c6
+DEBUG [Test worker] - Checked out connection 687609321 from pool.
+DEBUG [Test worker] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@28fc15e9]
+com.mysql.jdbc.JDBC4Connection@28fc15e9
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

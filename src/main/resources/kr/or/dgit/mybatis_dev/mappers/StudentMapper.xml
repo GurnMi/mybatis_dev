@@ -79,6 +79,124 @@
 	</update>
 	
 	
+	<resultMap id="StudentResult" type="Student">
+		<id property="studId" column="stud_id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="dob" column="dob"/>
+	</resultMap>
 	
+	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">
+		<id property="address.addrId" column="addr_id"/>
+		<id property="address.street" column="street"/>
+		<id property="address.city" column="city"/>
+		<id property="address.state" column="state"/>
+		<id property="address.zip" column="zip"/>
+		<id property="address.country" column="country"/>
+	</resultMap>
+	
+	
+	<select id="selectStudentByAllForResutlMap" resultMap="StudentResult">
+		<include refid="selectSql"/>
+	</select>
+	
+	<select id="selectStudentByAllForResutlMapWithAPI" resultMap="StudentResult">
+		<include refid="selectSql"/>
+	</select>
+	
+	<select id="selectStudentByAllForHashMap" resultType="map">
+		<include refid="selectSql"/>
+	</select>
+	
+	<select id="selectStudentByAllForHashMapWithAPI" resultType="map">
+		<include refid="selectSql"/>
+	</select>
+	
+	
+
+	<sql id="selectJoinAddressSql">
+		SELECT STUD_ID, NAME, EMAIL, PHONE, A.ADDR_ID, STREET, CITY, STATE, ZIP, COUNTRY
+		FROM STUDENTS S LEFT OUTER JOIN ADDRESSES A ON S.ADDR_ID=A.ADDR_ID
+	</sql>
+	
+	<select id="selectStudentByNoForResultMapExtends" parameterType="Student" resultMap="StudentWithAddressResult">
+		<include refid="selectJoinAddressSql"/>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectStudentByNoForResultMapExtendsWithAPI" parameterType="Student" resultMap="StudentWithAddressResult">
+		<include refid="selectJoinAddressSql"/>
+		<include refid="whereSql"/>
+	</select>
+	
+	<!-- 내포된 결과매핑을 사용한 일대일 매핑 -->
+	 <resultMap type="Student" id="StudentAssociation" extends="StudentResult">
+		<association property="address" resultMap="kr.or.dgit.mybatis_dev.dao.AddressDao.AddressResult"/>
+	</resultMap>
+	
+	<select id="selectStudentByNoAssociation" parameterType="Student" resultMap="StudentAssociation">
+		<include refid="selectJoinAddressSql"/>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectStudentByNoAssociationWithAPI" parameterType="Student" resultMap="StudentAssociation">
+		<include refid="selectJoinAddressSql"/>
+		<include refid="whereSql"/>
+	</select>
+
+	<!-- enum 타입 다루기 -->
+	<sql id="insertEnumSql">
+		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB, GENDER)
+		VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})
+	</sql>
+	
+	<insert id="insertEnumStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
+		<include refid="insertEnumSql"></include>
+	</insert>
+	
+	<insert id="insertEnumStudentWithAPI" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
+		<include refid="insertEnumSql"></include>
+	</insert>
+	
+	<!-- 여러개의 입력 파라미터 -->
+	
+	<resultMap type="Student" id="StudentGenderResult" extends="StudentResult">
+		<result property="gender" column="gender"/>
+	</resultMap>
+	
+	<sql id="selectParameterSql">
+		select stud_id, name, email, phone, dob, gender from students
+	</sql>
+	<sql id="whereNameEmailSql">
+		<where>
+			<if test= "name != null">
+				name = #{name}
+			</if>
+			<if test="email != email">
+				AND email = #{email}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectAllStudentByParam" resultMap="StudentGenderResult">
+		<include refid="selectParameterSql"/>
+		where name=#{param1} and email=#{param2}
+	</select>
+	
+	<select id="selectAllStudentByStdent" parameterType="Student" resultMap="StudentGenderResult">
+		<include refid="selectParameterSql"/>
+		<include refid="whereNameEmailSql"/>
+	</select>
+	
+	<select id="selectAllStudentByMap" parameterType="map" resultMap="StudentGenderResult">
+		<include refid="selectParameterSql"/>
+		<include refid="whereNameEmailSql"/>
+	</select>
+	
+	<!-- ResultSet 처리방식의 재정의 -->
+	<select id="selectStudentForMap" resultMap="StudentGenderResult">
+		<include refid="selectParameterSql"/>
+	</select>
 	
 </mapper>
